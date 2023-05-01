@@ -24,7 +24,7 @@ Needs to install Express.js
 
 ## Links
 
--
+- GitHub: https://github.com/Chenson92/Note-Taker
 -
 
 ## License
