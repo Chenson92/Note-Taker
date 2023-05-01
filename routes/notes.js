@@ -1,6 +1,4 @@
 const noteRoutes = require("express").Router();
-// const { v4: uuidv4 } = require("uuid");
-const { addNote } = require("../lib/notesFunction");
 const fs = require("fs");
 const path = require("path");
 
@@ -17,7 +15,10 @@ noteRoutes.post("/", (req, res) => {
   fs.readFile("./Develop/db/db.json", "utf-8", (err, data) => {
     let notesArray = JSON.parse(data);
     const newNote = req.body;
+    noteLength = notesArray.length.toString();
+    newNote.id = noteLength;
     notesArray.push(newNote);
+
     fs.writeFileSync("./Develop/db/db.json", JSON.stringify(notesArray));
     res.json(newNote);
   });

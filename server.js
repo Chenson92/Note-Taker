@@ -14,10 +14,6 @@ app.use("/api", api);
 app.use(express.static(path.join(__dirname, "Develop/public")));
 const ROOT = { root: path.join(__dirname, "./Develop/public") };
 
-// Path join gives you the absolute path from __dirname which is where THIS FILE is at
-// And also fixes any differences between computer OS
-// For example: Windows use ...\Develop\public
-
 // GET Route for homepage
 app.get("/", (req, res) => res.sendFile("index.html", ROOT));
 
