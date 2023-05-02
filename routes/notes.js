@@ -24,4 +24,17 @@ noteRoutes.post("/", (req, res) => {
   });
 });
 
+// Delete notes
+noteRoutes.delete("/:id", (req, res) => {
+  fs.readFile("./Develop/db/db.json", "utf-8", (err, data) => {
+    let notesArray = JSON.parse(data);
+    let noteId = req.params.id.toString();
+    notesArray = notesArray.filter((selected) => {
+      return selected.id != noteId;
+    });
+    fs.writeFileSync("./Develop/db/db.json", JSON.stringify(notesArray));
+    res.json(notesArray);
+  });
+});
+
 module.exports = noteRoutes;
